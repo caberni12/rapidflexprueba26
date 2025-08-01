@@ -1,0 +1,924 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  color: #888;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.modal form button {
+  padding: 12px 24px;
+  background-color: #00d1b2;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.loader {
+  display: none;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #00d1b2;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  margin: 15px auto 0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+    * {
+      
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    header {
+      position: relative;
+      height: 550px;
+      background-image: url('banner.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 4px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 7%;
+    }
+
+    .nav-logo img {
+      width: 100px;
+      height: 80px;
+      margin-top: -25px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      padding: 6px 12px;
+      background-color: #00d1b2;
+      color: white !important;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      zoom: 70%;
+      margin-top: -37px;
+      margin-left: -15px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      
+      /* AÑADIDOS para centrar el texto */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+
+    .nav-links a:hover {
+      background-color: #0033aa;
+    }
+
+    .hero-text {
+      top: 160px;
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      color: #ffffff;
+      max-width: 600px;
+     
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2px;
+      line-height: 1.1; /* más compacto entre líneas */
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+
+    .hero-text p {
+      font-size: 1.5rem;
+      color: #00d1b2fd;
+      font-weight: bold;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      margin-top: 40px;
+    }
+
+    .btn-cotiza {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      color: #051df78c;
+      background-color: #00d1b2;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 65px;
+      margin-left: 60px;
+    }
+
+    .btn-cotiza:hover {
+      background-color:#051df78c;
+      color: white;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: -300px; /* Menor separación entre tarjetas */
+      padding: 10px;
+      background-color: #ffffff;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    
+    .servicio {
+      background: #f5f5f5; /* Fondo gris del cuadrado */
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      width: 100%;
+      max-width: 280px;
+      height: 200px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    
+    .servicio img {
+      width: 105px;
+      height: 105px;
+      margin-bottom: -28px;
+    }
+    
+    .servicio h2 {
+      font-size: 1.5rem;
+      margin-bottom: 3px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .servicio p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #ffffff;
+      color: rgb(8, 8, 8);
+      font-weight: bold;
+    }
+
+    .redes-sociales {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .redes-sociales img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      transition: transform 0.3s ease;
+    }
+
+    .redes-sociales img:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+.seccion-seguridad2,
+.seccion-telefono,
+.seccion-seguridad {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 80px 5%;
+  background-color: #ffffff;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.contenido-seguridad2,
+.contenido-telefono,
+.contenido-seguridad {
+  max-width: 500px;
+  flex: 1 1 480px;
+  margin-left: 60px;
+}
+
+.contenido-seguridad2,
+.contenido-telefono h2,
+.contenido-seguridad h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0072ff; /* Títulos en azul */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.item-con-icono {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.item-con-icono .icono {
+  width: 48px;
+  height: 48px;
+}
+
+.item-con-icono p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  font-weight: 700; /* Texto en negritas */
+}
+
+.imagen-telefono {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenedor */
+  align-items: center;     /* Centra verticalmente si hay altura suficiente */
+  margin-top: 20px;        /* Ajusta separación hacia abajo desde el bloque anterior */
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* Imagen del teléfono - Control para escritorio */
+.imagen-telefono img {
+  display: block;                    /* La imagen se comporta como bloque */
+  width: 120%;                       /* Ocupa todo el ancho del contenedor */
+  max-width: 1600px;                  /* Tamaño máximo de ancho (ajustable) */
+  height: auto;                      /* Ajusta la altura automáticamente según el ancho */
+  object-fit: contain;              /* Asegura que no se deforme ni se recorte */
+  transform: translateX(-900px) translateY(-20px); 
+  /* 
+     Mueve la imagen:
+     -200px hacia la izquierda
+     -20px hacia arriba
+     Puedes cambiar los valores según lo necesites:
+     Ej: translateX(0) → centrado
+         translateX(100px) → hacia la derecha
+         translateY(30px) → hacia abajo
+  */
+  margin: 0 auto;                   /* Centra horizontalmente si no ocupa todo el ancho */
+}
+
+.imagen-telefono2 {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenedor */
+  align-items: center;     /* Centra verticalmente si hay altura suficiente */
+  margin-top: -500px;        /* Ajusta separación hacia abajo desde el bloque anterior */
+  flex: 1 1 auto;
+  width: 100%;
+  
+}
+
+/* Imagen del teléfono - Control para escritorio */
+.imagen-telefono2 img {
+  display: block;                    /* La imagen se comporta como bloque */
+  width: 100%;                       /* Ocupa todo el ancho del contenedor */
+  max-width: 1600px;                  /* Tamaño máximo de ancho (ajustable) */
+  height: auto;                      /* Ajusta la altura automáticamente según el ancho */
+  object-fit: contain;              /* Asegura que no se deforme ni se recorte */
+  transform: translateX(-180px) translateY(640px); 
+  
+  /* 
+     Mueve la imagen:
+     -200px hacia la izquierda
+     -20px hacia arriba
+     Puedes cambiar los valores según lo necesites:
+     Ej: translateX(0) → centrado
+         translateX(100px) → hacia la derecha
+         translateY(30px) → hacia abajo
+  */
+  margin: 0 auto;                   /* Centra horizontalmente si no ocupa todo el ancho */
+}
+
+
+
+
+/* Contenedor para mover la sección de seguimiento hacia la derecha */
+.seguimiento-contenedor {
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 600px;
+  margin-top: -400px;
+
+}
+.imagen-cajas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -390px;
+  
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+
+.imagen-cajas img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  transform: translateX(10px); /* desplazamiento base para ~1330px */
+
+}
+
+
+/* Override for full-width images */
+
+.imagen-cajas img {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+.imagen-cajas2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -430px;
+  
+  flex: 1 1 auto;
+  width: 130%;
+}
+
+
+.imagen-cajas2 img {
+  width: 140%;
+  max-width: 1200px;
+  height: auto;
+  top: auto;
+  object-fit: contain;
+  transform: translateX(600px); /* desplazamiento base para ~1330px */
+
+}
+
+
+/* Override for full-width images */
+
+.imagen-cajas2 img {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+
+
+/* Sección Marketplaces - estilo PDF exacto */
+.seccion-marketplaces {
+  padding: 60px 5%;
+  background-color: transparent;
+  text-align: center;
+}
+
+
+
+.seccion-marketplaces h2 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #0570f3; /* azul */
+  margin-bottom: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.seccion-marketplaces h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00d1b2fd; /* verde */
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.seccion-marketplaces p {
+  font-size: 0.95rem;
+  font-weight: 700; /* negrita */
+  color: #101010; /* negro oscuro */
+  line-height: 2.5;
+  max-width: 680px;
+  margin: 0 auto;
+  white-space: nowrap;
+  max-width: none;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+
+
+
+
+}
+
+
+
+
+
+
+.linea1 {
+  display: block;
+  margin-bottom: 0.0rem; /* separa la primera línea del resto */
+}
+
+.linea2 {
+  display: block;
+  margin-top: 0.0rem;    /* opcional: añade un poco de “aire” por encima */
+}
+
+.destacar {
+  font-weight: 700 !important;
+}
+
+.seccion-siguiente {
+  margin-top: 2rem;
+}
+
+/* ========== Sección Integraciones ========== */
+
+.seccion-integraciones {
+  padding: 60px 5%;
+  background-color: #ffffff;
+  text-align: center;
+  margin-top: -100px;
+}
+
+.seccion-integraciones h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #101010;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de logos de integraciones */
+.integraciones-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Botón de cada integración */
+.integracion-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  padding: 12px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto hover y focus: muestra el borde y un ligero levantamiento */
+.integracion-btn:hover,
+.integracion-btn:focus {
+  transform: translateY(-2px);
+  border-color: #0072ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado activo: borde visible permanentemente */
+.integracion-btn.active {
+  border-color: #0072ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen dentro del botón */
+.integracion-btn img {
+  display: block;
+  max-height: 180px;
+  width: auto;
+}
+
+/* Botón siempre visible "Contáctanos" en nav */
+.contacto-btn {
+  padding: 6px 12px;
+  background-color: #00d1b2;
+  color: #fff !important;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+}
+.contacto-btn:hover {
+  background-color: #009e92;
+}
+
+/* Oculta hamburguesa en escritorio */
+.hamburger {
+  display: none;
+}
+
+
+
+/* Splash styles */
+.splash {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.loader-splash {
+  border: 20px solid #f3f3f3;
+  border-top: 20px solid #00d1b2;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  animation: spin 1s linear infinite;
+}
+
+/* Slider menu */
+.slider-menu {
+  display: none;
+}
+.slider-menu a {
+  display: block;
+  padding: 12px 16px;
+  background-color: #0044cc;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* Sección de contacto con fondo azul */
+.seccion-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #141414; /* Fondo azul */
+  color: white;
+  padding: 60px 5%;
+  gap: 40px;
+}
+
+/* Bloque de texto de contacto */
+.info-contacto {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.info-contacto h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info-contacto p {
+  font-size: 1rem;
+  margin: 6px 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Botón de contacto */
+.btn-verde {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00d1b2;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-verde:hover {
+  background-color: #009e92;
+}
+
+/* Contenedor del mapa */
+.mapa {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 12px;
+}
+
+
+
+/* Reset y base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #ffffff
+
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reglas generales comunes (desktop primero) */
+header {
+  position: relative;
+  height: 550px;
+  background: url('banner.png') center/cover no-repeat;
+}
+
+.nav-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.hero-text {
+  position: absolute;
+  top: 160px;
+  left: 20px;
+  right: 20px;
+  color: #ffffff;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #00d1b2;
+  margin-top: 20px;
+}
+
+.btn-cotiza {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  background: #00d1b2;
+  color: #ffffff;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.servicio {
+  background: #f5f5f5;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 320px;
+}
+
+.servicio img {
+  width: 100px;
+  height: 100px;
+}
+
+.seccion-marketplaces2 {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.seccion-marketplaces2 h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.seccion-marketplaces2 p {
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.seccion-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 60px 20px;
+  background: #080808;
+  color: white;
+}
+
+.info-contacto {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.info-contacto h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info-contacto p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+
+
+
+/* ================== FORMULARIOS MODALES RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+  }
+
+  .modal form input,
+  .modal form textarea {
+    font-size: 1rem !important;
+    padding: 10px !important;
+  }
+
+  .modal form button {
+    width: 100% !important;
+    font-size: 1rem !important;
+    padding: 12px !important;
+  }
+
+  .close-btn {
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 24px !important;
+  }
+}
+
+/* ================== FORZAR ESTILO ESCRITORIO EN MÓVIL ================== */
+@media (max-width: 768px) {
+  body {
+    zoom: 100%;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    background: transparent !important;
+    position: static !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: 15px !important;
+  }
+
+  .hamburger,
+  .slider-menu {
+    display: none !important;
+  }
+
+  nav {
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    height: 7% !important;
+  }
+
+  .nav-logo img {
+    width: 100px !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ================== ZOOM MAYOR A 1600PX ================== */
+@media (min-width: 1600px) {
+  body {
+    zoom: 125%;
+  }
+}
+
