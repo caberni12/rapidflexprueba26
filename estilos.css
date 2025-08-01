@@ -850,75 +850,176 @@ header {
 }
 
 
-
-
-/* ================== FORMULARIOS MODALES RESPONSIVE ================== */
-@media (max-width: 768px) {
-  .modal-content {
-    width: 90% !important;
-    max-width: 90% !important;
-    padding: 20px !important;
-    border-radius: 12px !important;
-  }
-
-  .modal form input,
-  .modal form textarea {
-    font-size: 1rem !important;
-    padding: 10px !important;
-  }
-
-  .modal form button {
-    width: 100% !important;
-    font-size: 1rem !important;
-    padding: 12px !important;
-  }
-
-  .close-btn {
-    top: 10px !important;
-    right: 10px !important;
-    font-size: 24px !important;
-  }
-}
-
-/* ================== FORZAR ESTILO ESCRITORIO EN MÓVIL ================== */
-@media (max-width: 768px) {
-  body {
-    zoom: 100%;
-  }
-
-  .nav-links {
-    display: flex !important;
-    flex-direction: row !important;
-    background: transparent !important;
-    position: static !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    gap: 15px !important;
-  }
-
   .hamburger,
   .slider-menu {
     display: none !important;
   }
 
-  nav {
-    flex-direction: row !important;
-    align-items: center !important;
-    padding: 10px 20px !important;
-    height: 7% !important;
-  }
-
-  .nav-logo img {
-    width: 100px !important;
-    height: auto !important;
-    margin-bottom: 0 !important;
-  }
-}
 
 /* ================== ZOOM MAYOR A 1600PX ================== */
 @media (min-width: 1600px) {
   body {
     zoom: 125%;
+  }
+}
+
+/* ================== RESPONSIVE GENERAL PARA MÓVILES Y TABLETS ================== */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #fff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  p {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-text {
+    padding: 16px;
+    position: static;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-top: 16px;
+  }
+
+  .btn-cotiza {
+    display: block;
+    margin: 20px auto;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    background-color: #00d1b2;
+    color: white;
+    text-align: center;
+  }
+
+  .servicios {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .servicio {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+
+  .servicio img {
+    width: 80px;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+    object-fit: contain;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 90%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .modal form input,
+  .modal form textarea {
+    font-size: 1rem;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .modal form button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 50px;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
+
+  .imagen-telefono img,
+  .imagen-cajas img,
+  .imagen-cajas2 img {
+    width: 100% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block;
+    object-fit: contain;
+  }
+
+  .imagen-telefono,
+  .imagen-cajas,
+  .imagen-cajas2 {
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    display: flex;
+    width: 100%;
+  }
+
+  .seccion-telefono,
+  .seccion-seguridad,
+  .seccion-seguridad2 {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .contenido-telefono,
+  .contenido-seguridad {
+    text-align: justify;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .whatsapp-float {
+    width: 100px !important;
+    height: 100px !important;
+    bottom: 20px;
+    right: 10px !important;
+    position: fixed;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .whatsapp-float img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95rem;
+    background-color: #fff;
   }
 }
 
